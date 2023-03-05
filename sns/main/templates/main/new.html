@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<form action="{% url 'main:create' %}" method="post">
+    {%csrf_token%}
+    <p>제목 : <input type="text" name="title"></p>
+    <!-- <p>작성자 : <input type="text" name="writer"></p> -->
+    <p>내용 : <input type="text" name="body"></p>
+    <button type="submit">제출하기</button>
+</form>
+
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<form actinon="{% url 'accounts:login' %}" method="post">
+    {%csrf_token%}
+    id : <input type="text" name="username"><br>
+    password : <input type="password" name="password"><br>
+    <input type="submit" value="login">
+</form>
+
+{% endblock %}
