@@ -48,14 +48,15 @@ def delete(request, id):
     delete_blog.delete()
     return redirect('main:showmain')
 
-def likes(request, blog_id):
-    blog = get_object_or_404(Blog, id=blog_id)
-    if request.user in blog.like.all():
-        blog.like.remove(request.user)
-        blog.like_count -= 1
-        blog.save()
-    else:
-        blog.like.add(request.user)
-        blog.like_count += 1
-        blog.save()
-    return redirect('main:showdetail', blog.id)
+# likes 함수 작성
+# likes 함수 정의(블로그 id 값 받기):
+#     blog = 블로그 id에 맞는 게시물을 Blog로부터 가져오기
+#     만약 좋아요를 누른 사람 중 자신이 있다면:
+#         좋아요를 누른 사람 리스트에서 자신을 없애고
+#         좋아요 개수에서 1을 뺴고
+#         저장한다
+#     아니라면:
+#         좋아요를 누른 사람 리스트에 자신을 추가하고
+#         좋아요 개수에서 1을 더하고
+#         저장한다
+#     블로그 id와 함께 'main:showdetail'로 redirect한다.

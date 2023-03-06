@@ -5,22 +5,28 @@
 
 <div class="container">
     <h3>{{user.username}}</h3>
-        {% if request.user != user %}
-            {% if request.user.profile in user.profile.followers.all %}
-                <a href="{% url 'users:follow' user.id %}"><button type="button" class="btn btn-outline-info">언팔로우</button></a>
-            {% else %}
-                <a href="{% url 'users:follow' user.id %}"><button type="button" class="btn btn-info">팔로우</button></a>
-            {% endif %}
-        {% endif %}
-        <p>팔로워<br>{{user.profile.followers.count}}명</p>
-        {%for follower in user.profile.followers.all %}
-            <a href="{% url 'users:mypage' follower.user.id %}">{{ follower.user.username }}</a>
-        {% endfor %}
+        <!-- 만약 요청한 유저와 지금 보고있는 프로필의 유저가 다르다면(다른 사람의 프로필에 들어갔다면)
+            만약 팔로우 한 사람들 중에 팔로우를 요청한 유저가 있다면
+                'user:follow'로 user.id와 함께 전달
+                <a href="#"><button type="button" class="btn btn-outline-info">언팔로우</button></a>
+            아니라면
+                'user:follow'로 user.id와 함께 전달
+                <a href="#"><button type="button" class="btn btn-info">팔로우</button></a>
+            조건문 끝내기
+        조건문 끝내기 -->
 
-        <p>팔로잉<br>{{user.profile.followings.count}}명</p>
-        {% for following in user.profile.followings.all %}
-            <a href="{% url 'users:mypage' following.user.id %}">{{ following.user.username }}</a>
-        {% endfor %}
+        <!-- <p>팔로워<br>{{??}}명</p>
+        모든 팔로워에 대해 반복문
+            'users:mypage'로 follower.user.id와 함께 전달
+            <a href="#">{{ 팔로워 이름 }}</a>
+        반복문 끝
+
+        <p>팔로잉<br>{{??}}명</p>
+        모든 팔로잉에 대해 반복문
+            'users:mypage'로 following.user.id와 함께 전달
+            <a href="#">{{ 팔로잉 이름 }}</a>
+        반복문 끝 -->
+
     <div>
         {% for blog in blogs %}
         <a href="{% url 'main:showdetail' blog.id %}">{{blog.title}}</a>

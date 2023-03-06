@@ -26,5 +26,5 @@ urlpatterns = [
     path('update/<int:id>', showupdate, name="showupdate"),
     path('edit/<int:id>', edit, name="edit"),
     path('delete/<int:id>', delete, name="delete"),
-    path('likes/<int:blog_id>', likes, name="likes"),
+    # path('likes/<int:파라미터>', 함수 이름, name="likes"),
 ]

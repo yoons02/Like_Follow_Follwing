@@ -8,8 +8,8 @@ class Blog(models.Model):
     writer = models.ForeignKey(User, on_delete=models.CASCADE)
     pub_date = models.DateField()
     body = models.TextField()
-    like = models.ManyToManyField(User, related_name='likes',blank=True)
-    like_count = models.PositiveIntegerField(default=0) #0또는 양수만 받는 필드
+    # like = M2M_field(User, related_name='likes', blank=True)
+    # like_count = 양수만 받는 field(기본값은 0)
 
     def __str__(self):
         return self.title
